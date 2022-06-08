@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/Taddo/StudioProjects/SKLU/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.191" />
+        <entry key="..\:/Users/Taddo/StudioProjects/SKLU/app/src/main/res/drawable/background_input.xml" value="0.2265" />
+        <entry key="..\:/Users/Taddo/StudioProjects/SKLU/app/src/main/res/drawable/bg.xml" value="0.152" />
+        <entry key="..\:/Users/Taddo/StudioProjects/SKLU/app/src/main/res/drawable/bg2.xml" value="0.176" />
+        <entry key="..\:/Users/Taddo/StudioProjects/SKLU/app/src/main/res/drawable/ic_launcher_background.xml" value="0.191" />
+        <entry key="..\:/Users/Taddo/StudioProjects/SKLU/app/src/main/res/drawable/items.xml" value="0.179" />
+        <entry key="..\:/Users/Taddo/StudioProjects/SKLU/app/src/main/res/font/fontFamily.xml" value="0.28020833333333334" />
+        <entry key="..\:/Users/Taddo/StudioProjects/SKLU/app/src/main/res/font/font_family.xml" value="0.16460025651988028" />
+        <entry key="..\:/Users/Taddo/StudioProjects/SKLU/app/src/main/res/layout/activity_clo.xml" value="0.1703125" />
+        <entry key="..\:/Users/Taddo/StudioProjects/SKLU/app/src/main/res/layout/activity_fav.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/Taddo/StudioProjects/SKLU/app/src/main/res/layout/activity_home.xml" value="0.176" />
+        <entry key="..\:/Users/Taddo/StudioProjects/SKLU/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/Taddo/StudioProjects/SKLU/app/src/main/res/layout/activity_register.xml" value="0.264" />
+        <entry key="..\:/Users/Taddo/StudioProjects/SKLU/app/src/main/res/layout/clo.xml" value="0.2" />
+        <entry key="..\:/Users/Taddo/StudioProjects/SKLU/app/src/main/res/layout/clo2.xml" value="0.264" />
+        <entry key="..\:/Users/Taddo/StudioProjects/SKLU/app/src/main/res/layout/fontFamily.xml" value="0.20521590423257802" />
+        <entry key="..\:/Users/Taddo/StudioProjects/SKLU/app/src/main/res/layout/fragment_bantuan.xml" value="0.264" />
+        <entry key="..\:/Users/Taddo/StudioProjects/SKLU/app/src/main/res/layout/fragment_clo.xml" value="0.20521590423257802" />
+        <entry key="..\:/Users/Taddo/StudioProjects/SKLU/app/src/main/res/layout/fragment_desc.xml" value="0.1703125" />
+        <entry key="..\:/Users/Taddo/StudioProjects/SKLU/app/src/main/res/layout/fragment_fav.xml" value="0.2" />
+        <entry key="..\:/Users/Taddo/StudioProjects/SKLU/app/src/main/res/layout/fragment_home.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/Taddo/StudioProjects/SKLU/app/src/main/res/layout/items.xml" value="0.1703125" />
+        <entry key="..\:/Users/Taddo/StudioProjects/SKLU/app/src/main/res/layout/plo.xml" value="0.1703125" />
+        <entry key="..\:/Users/Taddo/StudioProjects/SKLU/app/src/main/res/layout/tt_attrs.xml" value="0.22826086956521738" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
