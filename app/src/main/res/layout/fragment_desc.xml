@@ -10,22 +10,25 @@
         android:layout_height="match_parent"
         android:layout_marginTop="20dp">
 
-
-        <LinearLayout
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:layout_marginLeft="20dp"
-            android:background="@drawable/bg2"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="30dp">
+            android:layout_height="match_parent">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="30dp"
+                android:background="@drawable/bg2"
                 android:gravity="center"
-                android:text="CPL-1	: Bertakwa kepada Tuhan Yang Maha Esa dan mampu menunjukkan sikap religius \n
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="CPL-1	: Bertakwa kepada Tuhan Yang Maha Esa dan mampu menunjukkan sikap religius \n
 CPL-2	: Menjunjung tinggi nilai kemanusiaan dalam menjalankan tugas berdasarkan agama, moral, dan etika \n
 CPL-3	:Dapat berperan sebagai warga negara yang bangga dan cinta tanah air, memiliki nasionalisme, serta rasa tanggungjawab pada negara dan bangsa \n
 CPL-4	:Dapat berkontribusi dalam peningkatan mutu kehidupan bermasyarakat, berbangsa, dan bernegara berdasarkan Pancasila \n
@@ -58,10 +61,10 @@ CPL-30:Mampu membangun intelligent systems dan aplikasinya untuk mempermudah keh
 CPL-31:Mampu memproses dan menganalisis permasalahan yang berhubungan dengan big data dan mengimplementasikan hasil analisis tersebut dalam suatu aplikasi inovatif yang menunjang kewirausahaan di bidang teknologi informas \n
 CPL-32:Mampu membuat game yang memiliki gameplay dan fitur menarik sesuai dengan aspek desain sehingga memiliki nilai jual baik berdasarkan umpan balik dari konsumen \n
 CPL-33:Mampu menciptakan rintisan wirausaha berbasis teknologi terkini yang tepat guna untuk menyelesaikan permasalahan dan memberikan dampak positif bagi masyarakat \n
-"/>
-        </LinearLayout>
+" />
+            </LinearLayout>
 
-
+        </androidx.core.widget.NestedScrollView>
 
     </RelativeLayout>
 

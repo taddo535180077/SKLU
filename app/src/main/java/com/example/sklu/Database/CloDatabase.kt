@@ -67,6 +67,33 @@ class CloDatabase(context: Context?) :
         // return contact
     }// Adding contact to list
 
+    fun getClo(type: String, id:String): Clo {
+        val db = this.readableDatabase
+        val contactList: MutableList<Clo> = ArrayList()
+
+        val cursor = db.query(
+            TABLE_CONTACTS, arrayOf(
+                KEY_ID, Key_NAME, KEY_SCORE, KEY_GRADE
+            ), Key_NAME + " = ? AND "+ KEY_ID_PERSON+" =?", arrayOf(type, id), KEY_ID, null, null, null
+        )
+        if (cursor.moveToFirst()) {
+            do {
+                val contact = Clo()
+                contact.id = cursor.getString(0).toInt()
+                contact.name = cursor.getString(1)
+                contact.score = cursor.getString(2)
+                contact.grade = cursor.getString(3)
+                // Adding contact to list
+                contactList.add(contact)
+            } while (cursor.moveToNext())
+            return contactList[0]
+        }
+
+        return Clo()
+        // return contact
+    }// Adding contact to list
+
+
     // return contact list
 // Select All Query
     val countClo: Boolean

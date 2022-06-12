@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sklu.Adapter.CloAdapter
 import com.example.sklu.Adapter.PloAdapter
+import com.example.sklu.Database.CloDatabase
 import com.example.sklu.Model.Clo
 import com.example.sklu.Model.Plo
 import kotlinx.android.synthetic.main.fragment_clo.*
@@ -25,6 +26,10 @@ class CloFragment(val items: ArrayList<Clo>,val homeActivity: HomeActivity, val 
         llm.orientation = LinearLayoutManager.VERTICAL
         recycler.setLayoutManager(llm)
         recycler.adapter = itemAdapter
+
+        var db = CloDatabase(homeActivity)
+        var clo = db.getClo("Industry Intership", "1")
+        Log.e("RESULT====GET", "getData: ${clo.score}", )
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,11 +49,14 @@ class CloFragment(val items: ArrayList<Clo>,val homeActivity: HomeActivity, val 
         super.onViewCreated(view, savedInstanceState)
 
         getData()
+        title.text = type
 
         submit.setOnClickListener {
             itemAdapter.updateAll()
             Toast.makeText(homeActivity, "Data Berhasil Di Update!", Toast.LENGTH_SHORT).show()
             homeActivity.goToClo(type)
         }
+
+        result.text = Decision(homeActivity).getPlo(type)
     }
 }

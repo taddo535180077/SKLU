@@ -31,7 +31,7 @@
             android:layout_marginLeft="20dp"
             android:layout_toLeftOf="@id/grade"
             android:hint="0"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:maxLength="3" />
 
         <TextView
