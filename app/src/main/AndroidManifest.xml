@@ -9,11 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SKLU">
-
+        <activity
+            android:name=".AfterLogin"
+            android:exported="false" />
         <activity
             android:name=".HomeActivity"
-            android:exported="false"/>
-
+            android:exported="false" />
         <activity
             android:name=".RegisterActivity"
             android:exported="false" />

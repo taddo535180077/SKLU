@@ -30,12 +30,14 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
     private fun checkFieldsForEmptyValues(){
-        if(email.text.isEmpty() || username.text.isEmpty() || pass.text.isEmpty() || pass2.text.isEmpty()){
+        if(email.text.isEmpty() || pass.text.isEmpty() || pass2.text.isEmpty()){
             registerMhs.isEnabled = false
             registerCmp.isEnabled = false
+            admin.isEnabled = false
         }else{
             registerMhs.isEnabled = true
             registerCmp.isEnabled = true
+            admin.isEnabled= true
         }
     }
 
@@ -54,7 +56,7 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun inputValidation(person: Person, pass2: String):String{
-        if(email.text.isEmpty() || username.text.isEmpty() || pass.text.isEmpty() || pass2 == ""){
+        if(email.text.isEmpty() || pass.text.isEmpty() || pass2 == ""){
             return "Please Fill All Field"
         }
 
@@ -107,7 +109,7 @@ class RegisterActivity : AppCompatActivity() {
             else {
                 role = "mhs"
 
-                val person = Person(username.text.toString(), role, email.text.toString(), pass.text.toString() )
+                val person = Person("", role, email.text.toString(), pass.text.toString() )
                 regis(person)
             }
 
@@ -126,7 +128,26 @@ class RegisterActivity : AppCompatActivity() {
             else {
                 role = "cmp"
 
-                val person = Person(username.text.toString(), role, email.text.toString(), pass.text.toString() )
+                val person = Person("", role, email.text.toString(), pass.text.toString() )
+                regis(person)
+            }
+
+//            intent = Intent(this, HomeActivity::class.java)
+//            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+//            startActivity(intent)
+//            finishAffinity()
+        }
+
+        admin.setOnClickListener {
+            val person = Person(email.text.toString(), pass.text.toString())
+            val response = inputValidation(person, pass2.text.toString())
+            if(response!=""){
+                showResponse(response)
+            }
+            else {
+                role = "admin"
+
+                val person = Person("", role, email.text.toString(), pass.text.toString() )
                 regis(person)
             }
 

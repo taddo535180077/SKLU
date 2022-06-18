@@ -28,7 +28,7 @@ class PersonDatabase(context: Context?) :
     fun addPerson(person: Person) {
         val db = this.writableDatabase
         val values = ContentValues()
-        values.put(KEY_NAME, person.name) // Contact Name
+        values.put(KEY_NAME, "") // Contact Name
         values.put(Key_Role, person.role) // Contact Role
         values.put(Key_Email, person.email) // Contact Role
         values.put(Key_Password, person.password) // Contact Role

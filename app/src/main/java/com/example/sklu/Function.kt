@@ -22,6 +22,11 @@ class Function {
             editor.putString("status", person.role)
             editor.apply()
         }
+        fun setPref(mContext: Context, name: String){
+            val editor = mContext.getSharedPreferences("PREFS", AppCompatActivity.MODE_PRIVATE).edit()
+            editor.putString("name", name)
+            editor.apply()
+        }
         fun logout(mContext: Context){
             val editor = mContext.getSharedPreferences("PREFS", AppCompatActivity.MODE_PRIVATE).edit()
             editor.putString("role", "none")

@@ -8,6 +8,7 @@ import android.widget.CheckBox
 import android.widget.RelativeLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sklu.Database.FavDatabase
 import com.example.sklu.Function
@@ -53,6 +54,9 @@ class PloAdapter : RecyclerView.Adapter<PloAdapter.ViewHolder> {
         }
 
         var status = ""
+        if(role!="admin"){
+            holder.fav.visibility = View.GONE
+        }
         holder.fav.setOnCheckedChangeListener { compoundButton, b ->
             if(b==true) status = "true"
             else status = "false"
@@ -61,6 +65,8 @@ class PloAdapter : RecyclerView.Adapter<PloAdapter.ViewHolder> {
 
         holder.body.setOnClickListener {
             main.goToClo(item!!.name.toString())
+
+            main.SetFav()
         }
 
     }
