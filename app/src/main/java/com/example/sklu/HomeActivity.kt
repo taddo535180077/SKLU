@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.sklu.Database.CloDatabase
 import com.example.sklu.Database.FavDatabase
@@ -27,13 +28,14 @@ class HomeActivity : AppCompatActivity() {
     val fragmentManager = supportFragmentManager
     private var id: String=""
     private var nameText: String=""
+    private var favBtn = false
 
     fun getData() {
         id = func.getPref(this, "id")
         Log.e("RESULT===", "getData: $id", )
         role = func.getPref(this,"status")
         nameText = func.getPref(this, "name")
-        name.text = "Hi, $nameText"
+        name.text = "Hi, $nameText $role"
         if(role=="mhs"){
             fav.visibility = View.GONE
         }else{
@@ -128,14 +130,40 @@ class HomeActivity : AppCompatActivity() {
     private fun closeDrawer(){
         nav_bar.closeDrawer(Gravity.LEFT, true)
     }
+
     fun goToHome(){
+        favBtn = false
         home = true
-        items = db.allPlo(id)
-        val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.fragmentHome, HomeFragment(this, items, this))
-        fragmentTransaction.commit()
-        back.visibility = View.GONE
+        if(role=="cmp") {
+            goToFav()
+        }else{
+            items = db.allPlo(id)
+            val fragmentTransaction = fragmentManager.beginTransaction()
+            fragmentTransaction.replace(R.id.fragmentHome, HomeFragment(this, items, this))
+            fragmentTransaction.commit()
+            back.visibility = View.GONE
+        }
     }
+
+    private fun goToFav(){
+         if(role=="cmp"){
+            home = true
+            back.visibility = View.GONE
+            fav.visibility = View.GONE
+        }
+        else {
+            home = false
+            back.visibility = View.VISIBLE
+        }
+        val bool = db.countPlo
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.fragmentHome, FavFragment(db.allPlo(id), bool, this))
+        fragmentTransaction.commit()
+        closeDrawer()
+
+
+    }
+
     fun goToClo(type: String){
         home = false
         var tipe = "%,"+type+",%"
@@ -150,9 +178,17 @@ class HomeActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        if(!home){
+        Toast.makeText(this, "$favBtn", Toast.LENGTH_SHORT).show()
+        if(favBtn){
+            goToFav()
+            favBtn = false
+        }
+        else if(!home){
+            favBtn = false
             goToHome()
-        }else{
+        }
+        else{
+            favBtn = false
             super.onBackPressed();
         }
     }
@@ -169,6 +205,9 @@ class HomeActivity : AppCompatActivity() {
         startActivity(intent)
         finishAffinity()
     }
+    fun SetFav(){
+        favBtn = !favBtn
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -178,14 +217,7 @@ class HomeActivity : AppCompatActivity() {
         setButtonFunction()
 
         fav.setOnClickListener {
-            home = false
-            val bool = db.countPlo
-            val fragmentTransaction = fragmentManager.beginTransaction()
-            fragmentTransaction.replace(R.id.fragmentHome, FavFragment(db.allPlo(id), bool, this))
-            fragmentTransaction.commit()
-            closeDrawer()
-
-            back.visibility = View.VISIBLE
+            goToFav()
         }
         bantuan.setOnClickListener {
             home = false
@@ -205,6 +237,15 @@ class HomeActivity : AppCompatActivity() {
 
             back.visibility = View.VISIBLE
         }
+
+        pengukuran.setOnClickListener {
+            home = true
+            goToHome()
+            closeDrawer()
+
+            back.visibility = View.GONE
+        }
+
         logout.setOnClickListener {
             logout()
         }
@@ -213,7 +254,8 @@ class HomeActivity : AppCompatActivity() {
         goToHome()
 
         back.setOnClickListener {
-            goToHome()
+            this.onBackPressed()
+//            goToHome()
         }
 //        val llm = LinearLayoutManager(this)
 //        llm.orientation = LinearLayoutManager.VERTICAL

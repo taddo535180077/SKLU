@@ -47,74 +47,72 @@
                     android:id="@+id/email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/bg"
                     android:hint="Email"
-                    android:background="@drawable/bg"
                     android:inputType="text"
-                    android:maxLength="25"
-                    android:layout_marginBottom="15dp"/>
-
-
-                <EditText
-                    android:id="@+id/username"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Username"
-                    android:inputType="text"
-                    android:background="@drawable/bg"
-                    android:maxLength="25"
-                    android:layout_marginBottom="15dp"/>
+                    android:maxLength="25" />
 
 
                 <EditText
                     android:id="@+id/pass"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Password"
+                    android:layout_marginBottom="15dp"
                     android:background="@drawable/bg"
+                    android:hint="Password"
                     android:inputType="textPassword"
-                    android:maxLength="25"
-                    android:layout_marginBottom="15dp"/>
+                    android:maxLength="25" />
 
 
                 <EditText
                     android:id="@+id/pass2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/bg"
                     android:hint="Confirm Password"
                     android:inputType="textPassword"
-                    android:background="@drawable/bg"
-                    android:maxLength="25"
-                    android:layout_marginBottom="15dp"/>
+                    android:maxLength="25" />
             </LinearLayout>
 
-                <Button
-                    android:layout_marginTop="15dp"
-                    android:id="@+id/registerMhs"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Daftar sebagai Mahasiswa"
-                    android:background="@drawable/bg2"
-                    android:textColor="@color/black"
-                    />
+            <Button
+                android:id="@+id/registerMhs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/bg2"
+                android:text="Daftar sebagai Mahasiswa"
+                android:textColor="@color/black" />
 
-                <Button
-                    android:id="@+id/registerCmp"
-                    android:layout_marginTop="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Daftar sebagai Perusahaan"
-                    android:background="@drawable/bg2"
-                    android:textColor="@color/black" />
+            <Button
+                android:id="@+id/registerCmp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg2"
+                android:text="Daftar sebagai Perusahaan"
+                android:textColor="@color/black" />
 
-                <Button
-                    android:id="@+id/register"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"
-                    android:text="Have a account? Sign In"
-                    android:textColor="#DD3A46"
-                    android:textSize="14dp" />
+            <Button
+                android:id="@+id/admin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg2"
+                android:text="Daftar sebagai Admin"
+                android:textColor="@color/black" />
 
-            </LinearLayout>
+            <Button
+                android:id="@+id/register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:text="Have a account? Sign In"
+                android:textColor="#DD3A46"
+                android:textSize="14dp" />
+
+
+        </LinearLayout>
     </RelativeLayout>
 </RelativeLayout>

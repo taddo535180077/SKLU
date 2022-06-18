@@ -83,11 +83,20 @@ class MainActivity : AppCompatActivity() {
         goToMain()
     }
     private fun goToMain(){
-        var intent = Intent(this@MainActivity, HomeActivity::class.java)
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-        startActivity(intent)
-        finish()
+        val name = func.getPref(this, "name")
+        if(name!="") {
+            var intent = Intent(this@MainActivity, HomeActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            startActivity(intent)
+            finish()
+        }else{
+            var intent = Intent(this@MainActivity, AfterLogin::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            startActivity(intent)
+            finish()
+        }
     }
+
     private fun isLogin(){
         role = func.getPref(this, "email")
         if (role != "none") {
