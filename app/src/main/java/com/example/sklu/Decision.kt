@@ -2,6 +2,7 @@ package com.example.sklu
 
 import android.content.Context
 import android.util.Log
+import android.widget.Toast
 import com.example.sklu.Database.CloDatabase
 import com.example.sklu.Model.Plo
 import java.io.Serializable
@@ -11,9 +12,11 @@ class Decision(val mContext: Context) {
 
     private var db = CloDatabase(mContext)
     private val idPerson = Function.getPref(mContext, "id")
+    private val idCmp = Function.getPref(mContext, "idCmp")
+    private var username = ""
 
-    fun getPlo(type: String): String {
-
+    fun getPlo(type: String, username: String): String {
+        this.username = username
         when (type) {
             "CPL-1" -> return cpl1()
             "CPL-2" -> return cpl2()
@@ -303,8 +306,19 @@ class Decision(val mContext: Context) {
     }
 
     //recursive function
-    fun decition(idPerson: String, clos: Array<Serializable>): String {
-        var clo = db.getClo(clos[3].toString(), idPerson)
+    fun decition(idPersons: String, clos: Array<Serializable>): String {
+        var idPerson = ""
+
+        var username = ""
+        if(this.username==""){
+            username = Function.getPref(mContext, "username")
+            idPerson = this.idPerson
+        }else{
+            username = this.username
+            idPerson = this.idCmp
+        }
+
+        var clo = db.getClo(clos[3].toString(), idPerson, username)
         var type = ""
         var score = clo.score!!.toFloat()
 
@@ -333,9 +347,12 @@ class Decision(val mContext: Context) {
     }
 
     private fun getResult(result: String): String {
-        if (result == "A") return "LULUS"
-        else if (result == "NA") return "TIDAK LULUS"
-        return "none"
+        var res = ""
+        if (result == "A") res =  "LULUS"
+        else if (result == "NA") res =  "TIDAK LULUS"
+        else res = "none"
+
+        return res
     }
 
 

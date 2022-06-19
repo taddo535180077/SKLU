@@ -7,17 +7,19 @@ class Clo {
     var status: String? = null
     var grade: String? = null
     var idPerson: String?=null
+    var username: String?=null
 
     var list: String? = null
 
     constructor() {}
 
-    constructor(name: String, score: String, grade: String,list: String, idPerson: String) {
+    constructor(name: String, score: String, grade: String,list: String, idPerson: String, username: String) {
         this.name = name
         this.score = score
         this.grade = grade
         this.list = list
         this.idPerson = idPerson
+        this.username = username
     }
     constructor(id: Int, name: String, score: String, status: String) {
         this.name = name

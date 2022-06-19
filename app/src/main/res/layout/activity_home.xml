@@ -33,12 +33,16 @@
 
                 <TextView
                     android:id="@+id/name"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="20dp"
                     android:layout_toLeftOf="@+id/logo"
+                    android:layout_toRightOf="@+id/hamburger"
                     android:fontFamily="@font/bold"
+                    android:textAlignment="viewEnd"
+                    android:ellipsize="end"
+                    android:maxLines="1"
                     android:text="NAME"
                     android:textSize="24dp" />
 
@@ -112,6 +116,24 @@
                             android:layout_marginLeft="20dp"
                             android:layout_marginTop="5dp"
                             android:text="Pengukuran Capaian Hasil Pembeljaran"
+                            android:textFontWeight="400"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/hasil"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginTop="20dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="5dp"
+                            android:text="Hasil"
                             android:textFontWeight="400"
                             android:textSize="14sp" />
                     </LinearLayout>

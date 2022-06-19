@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sklu.Adapter.PloAdapter
 import com.example.sklu.Model.Plo
@@ -17,10 +18,9 @@ class FavFragment(val items: ArrayList<Plo>?, val bool: Boolean, val homeActivit
             for (i in items!!){
                 if(i.fav == "true") item?.add(i)
             }
-
             val llm = LinearLayoutManager(homeActivity)
             llm.orientation = LinearLayoutManager.VERTICAL
-            val itemAdapter = PloAdapter(homeActivity, item, homeActivity)
+            val itemAdapter = PloAdapter(homeActivity, item, homeActivity,"fav")
             recycler.setLayoutManager(llm)
             recycler.adapter = itemAdapter
         }

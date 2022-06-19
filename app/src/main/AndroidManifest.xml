@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SKLU">
         <activity
+            android:name=".InputMhs"
+            android:exported="false" />
+        <activity
             android:name=".AfterLogin"
             android:exported="false" />
         <activity

@@ -11,7 +11,7 @@ class CloDatabase(context: Context?) :
     // Creating Tables
     override fun onCreate(db: SQLiteDatabase) {
         val CREATE_CONTACTS_TABLE =
-            "CREATE TABLE " + TABLE_CONTACTS + "(" + KEY_ID + " INTEGER PRIMARY KEY," + Key_NAME + " TEXT," + KEY_SCORE + " TEXT," + KEY_GRADE + " TEXT," + KEY_STATUS + " TEXT," + KEY_LIST + " TEXT," + KEY_ID_PERSON + " TEXT" +")"
+            "CREATE TABLE " + TABLE_CONTACTS + "(" + KEY_ID + " INTEGER PRIMARY KEY," + Key_NAME + " TEXT," + KEY_SCORE + " TEXT," + KEY_GRADE + " TEXT," + KEY_STATUS + " TEXT," + KEY_LIST + " TEXT," + KEY_ID_PERSON + " TEXT," + KEY_NAME_PERSON + " TEXT"+")"
         db.execSQL(CREATE_CONTACTS_TABLE)
     }
 
@@ -35,6 +35,7 @@ class CloDatabase(context: Context?) :
         values.put(KEY_GRADE, clo.grade)//
         values.put(KEY_LIST, clo.list)//
         values.put(KEY_ID_PERSON, clo.idPerson)//
+        values.put(KEY_NAME_PERSON, clo.username)//
         // Inserting Row
         db.insert(TABLE_CONTACTS, null, values)
         //2nd argument is String containing nullColumnHack
@@ -42,14 +43,15 @@ class CloDatabase(context: Context?) :
     }
 
     // code to get the single contact
-    fun allClo(type: String, id:String): ArrayList<Clo>? {
+    fun allClo(type: String, id:String,username: String): ArrayList<Clo>? {
         val db = this.readableDatabase
         val contactList: MutableList<Clo> = ArrayList()
 
         val cursor = db.query(
             TABLE_CONTACTS, arrayOf(
                 KEY_ID, Key_NAME, KEY_SCORE, KEY_GRADE
-            ), KEY_LIST + " LIKE ? AND "+ KEY_ID_PERSON+" =?", arrayOf(type, id), KEY_ID, null, null, null
+            ), KEY_LIST + " LIKE ? AND "+ KEY_ID_PERSON+" = ? AND "+ KEY_NAME_PERSON+ " = ?",
+            arrayOf(type, id, username), KEY_ID, null, null, null
         )
         if (cursor.moveToFirst()) {
             do {
@@ -67,14 +69,14 @@ class CloDatabase(context: Context?) :
         // return contact
     }// Adding contact to list
 
-    fun getClo(type: String, id:String): Clo {
+    fun getClo(type: String, id:String,username: String): Clo {
         val db = this.readableDatabase
         val contactList: MutableList<Clo> = ArrayList()
 
         val cursor = db.query(
             TABLE_CONTACTS, arrayOf(
                 KEY_ID, Key_NAME, KEY_SCORE, KEY_GRADE
-            ), Key_NAME + " = ? AND "+ KEY_ID_PERSON+" =?", arrayOf(type, id), KEY_ID, null, null, null
+            ), Key_NAME + " = ? AND "+ KEY_ID_PERSON+" = ? AND "+ KEY_NAME_PERSON + " = ?", arrayOf(type, id,username), KEY_ID, null, null, null
         )
         if (cursor.moveToFirst()) {
             do {
@@ -90,6 +92,33 @@ class CloDatabase(context: Context?) :
         }
 
         return Clo()
+        // return contact
+    }// Adding contact to list
+
+    fun getCloResult(id:String): ArrayList<Clo>? {
+        val db = this.readableDatabase
+        val contactList: MutableList<Clo> = ArrayList()
+
+        val cursor = db.query(
+            TABLE_CONTACTS, arrayOf(
+                KEY_ID, Key_NAME, KEY_SCORE, KEY_GRADE, KEY_NAME_PERSON
+            ), KEY_ID_PERSON+ " = ?",
+            arrayOf(id), KEY_NAME_PERSON ,null, null, null
+        )
+        if (cursor.moveToFirst()) {
+            do {
+                val contact = Clo()
+                contact.id = cursor.getString(0).toInt()
+                contact.name = cursor.getString(1)
+                contact.score = cursor.getString(2)
+                contact.grade = cursor.getString(3)
+                contact.username = cursor.getString(4)
+                // Adding contact to list
+                contactList.add(contact)
+            } while (cursor.moveToNext())
+        }
+
+        return contactList as ArrayList<Clo>
         // return contact
     }// Adding contact to list
 
@@ -115,6 +144,7 @@ class CloDatabase(context: Context?) :
                     contact.status = cursor.getString(4)
                     contact.list = cursor.getString(5)
                     contact.idPerson = cursor.getString(6)
+                    contact.username = cursor.getString(7)
                     // Adding contact to list
                     contactList.add(contact)
                 } while (cursor.moveToNext())
@@ -155,14 +185,15 @@ class CloDatabase(context: Context?) :
 //        }
 
     // code to update the single contact
-    fun updateClo(id: Int, score: String?, status: String?, grade: String?): Int {
+    fun updateClo(id: Int, score: String?, status: String?, grade: String?, username: String): Int {
         val db = this.writableDatabase
         val values = ContentValues()
         values.put(KEY_SCORE, score)
         values.put(KEY_STATUS, status)
         values.put(KEY_GRADE, grade)
         // updating row
-        return db.update(TABLE_CONTACTS, values, KEY_ID + " = ?", arrayOf(id.toString()))
+        return db.update(TABLE_CONTACTS, values, KEY_ID + " = ? AND "+ KEY_NAME_PERSON +" = ?",
+            arrayOf(id.toString(), username))
     }
 
 
@@ -183,5 +214,6 @@ class CloDatabase(context: Context?) :
         private const val KEY_GRADE = "grade"
         private const val KEY_LIST = "list"
         private const val KEY_ID_PERSON = "idperson"
+        private const val KEY_NAME_PERSON = "nameperson"
     }
 }

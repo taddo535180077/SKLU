@@ -5,6 +5,7 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import com.example.sklu.Model.Person
+import com.example.sklu.Model.Plo
 
 class PersonDatabase(context: Context?) :
     SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
@@ -178,16 +179,13 @@ class PersonDatabase(context: Context?) :
     }
 
     // code to update the single contact
-    fun updatePerson(person: Person): Int {
+    fun updatePerson(name: String, id:String): Int {
         val db = this.writableDatabase
         val values = ContentValues()
-        values.put(KEY_NAME, person.name)
-        values.put(Key_Role, person.role)
-        values.put(Key_Email, person.email)
-        values.put(Key_Password, person.password)
+        values.put(KEY_NAME, name)
 
         // updating row
-        return db.update(TABLE_CONTACTS, values, KEY_ID + " = ?", arrayOf(person.id.toString()))
+        return db.update(TABLE_CONTACTS, values, KEY_ID + " = ?", arrayOf(id))
     }
 
 

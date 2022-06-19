@@ -7,13 +7,11 @@ import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.RelativeLayout
 import android.widget.TextView
-import android.widget.Toast
-import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sklu.Database.FavDatabase
 import com.example.sklu.Function
 import com.example.sklu.HomeActivity
-import com.example.sklu.MainActivity
+import com.example.sklu.DescPlo
 import com.example.sklu.Model.Plo
 import com.example.sklu.R
 
@@ -23,13 +21,15 @@ class PloAdapter : RecyclerView.Adapter<PloAdapter.ViewHolder> {
     private var db: FavDatabase
     private var main: HomeActivity
     private var role: String?= ""
+    private var from: String?=""
 
-    constructor(mContext: Context, items: ArrayList<Plo>?, main: HomeActivity) {
+    constructor(mContext: Context, items: ArrayList<Plo>?, main: HomeActivity, from: String) {
         this.mContext = mContext
         this.items = items
         this.main = main
         db = FavDatabase(mContext)
         role = Function.getPref(mContext, "status")
+        this.from = from
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -37,9 +37,14 @@ class PloAdapter : RecyclerView.Adapter<PloAdapter.ViewHolder> {
         return ViewHolder(v)
     }
 
+    override fun getItemViewType(position: Int): Int {
+        return position
+    }
+
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = items?.get(position)
         holder.name_tv.text = item?.name.toString()
+        holder.desc.text = DescPlo().getString(item?.name.toString())
 
         if(role=="mhs"){
             holder.fav.visibility = View.GONE
@@ -66,7 +71,7 @@ class PloAdapter : RecyclerView.Adapter<PloAdapter.ViewHolder> {
         holder.body.setOnClickListener {
             main.goToClo(item!!.name.toString())
 
-            main.SetFav()
+            main.SetFav(this.from.toString())
         }
 
     }
@@ -79,11 +84,13 @@ class PloAdapter : RecyclerView.Adapter<PloAdapter.ViewHolder> {
         var name_tv: TextView
         var fav: CheckBox
         var body: RelativeLayout
+        var desc: TextView
 
         init {
             name_tv = itemView.findViewById(R.id.title)
             fav = itemView.findViewById(R.id.star)
             body = itemView.findViewById(R.id.body)
+            desc = itemView.findViewById(R.id.desc)
         }
     }
 
