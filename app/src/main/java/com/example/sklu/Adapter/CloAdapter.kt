@@ -79,7 +79,7 @@ class CloAdapter : RecyclerView.Adapter<CloAdapter.ViewHolder> {
                         setValue(pos, temp)
 
                     } catch (e: Exception) {
-
+                        setValue(pos, "0")
                     }
                     holder.score.setSelection(holder.score.text.length)
                     holder.score.addTextChangedListener(this)
@@ -115,15 +115,22 @@ class CloAdapter : RecyclerView.Adapter<CloAdapter.ViewHolder> {
     public fun updateAll() {
         for (i in 0..(items!!.size-1)) {
             var item = items!![i]
-            var grade = ""
-            if (item.score!!.toFloat()>=3.5) grade = "A"
-            else if (item.score!!.toFloat()>=3) grade = "B"
-            else if (item.score!!.toFloat()>=2) grade = "C"
-            else if (item.score!!.toFloat()>=1) grade = "D"
-            else if (item.score!!.toFloat()>=0) grade = "E"
-            else grade = "E"
-            var username = Function.getPref(mContext, "username")
-            db.updateClo(item.id, item.score, "", grade, username)
+            if(item.score!!.isEmpty() || item.score!! == "" ){
+                var username = Function.getPref(mContext, "username")
+                db.updateClo(item.id, "0", "", "E", username)
+            }else{
+                var grade = ""
+                if (item.score!!.toFloat()>=3.5) grade = "A"
+                else if (item.score!!.toFloat()>=3) grade = "B"
+                else if (item.score!!.toFloat()>=2) grade = "C"
+                else if (item.score!!.toFloat()>=1) grade = "D"
+                else if (item.score!!.toFloat()>=0) grade = "E"
+                else if (item.score!!.isEmpty()) grade = "E"
+                else grade = "E"
+                var username = Function.getPref(mContext, "username")
+                db.updateClo(item.id, item.score, "", grade, username)
+            }
+
         }
     }
 

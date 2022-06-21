@@ -15,6 +15,8 @@ import com.example.sklu.Model.Plo
 import kotlinx.android.synthetic.main.fragment_clo.*
 import kotlinx.android.synthetic.main.fragment_fav.*
 import kotlinx.android.synthetic.main.fragment_fav.recycler
+import java.math.RoundingMode
+import java.text.DecimalFormat
 
 
 class CloFragment(val items: ArrayList<Clo>, val homeActivity: HomeActivity, val type: String) :
@@ -67,10 +69,14 @@ class CloFragment(val items: ArrayList<Clo>, val homeActivity: HomeActivity, val
         }
         if (total == null) average = ""
         else {
-            average = (total / items!!.size).toString()
+            total = total / items!!.size
         }
+        val df = DecimalFormat("#.##")
+        df.roundingMode = RoundingMode.CEILING
+        val results = df.format(total).toDouble()
 
-        result.text = "$res, $average"
+
+        result.text = "$res, $results"
     }
 
 }
