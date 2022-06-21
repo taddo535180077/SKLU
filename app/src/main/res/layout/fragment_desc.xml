@@ -28,7 +28,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="CPL-1	: Bertakwa kepada Tuhan Yang Maha Esa dan mampu menunjukkan sikap religius \n
+                    android:text="SIKAP \n \n
+CPL-1	: Bertakwa kepada Tuhan Yang Maha Esa dan mampu menunjukkan sikap religius \n
 CPL-2	: Menjunjung tinggi nilai kemanusiaan dalam menjalankan tugas berdasarkan agama, moral, dan etika \n
 CPL-3	:Dapat berperan sebagai warga negara yang bangga dan cinta tanah air, memiliki nasionalisme, serta rasa tanggungjawab pada negara dan bangsa \n
 CPL-4	:Dapat berkontribusi dalam peningkatan mutu kehidupan bermasyarakat, berbangsa, dan bernegara berdasarkan Pancasila \n
@@ -37,14 +38,16 @@ CPL-6	:Dapat menghargai keanekaragaman budaya, pandangan, agama, dan kepercayaan
 CPL-7	:Taat hukum dan disiplin dalam kehidupan bermasyarakat dan bernegara \n
 CPL-8	:Menunjukkan sikap bertanggung jawab atas pekerjaan di bidang keahliannya secara mandiri\n
 CPL-9	:Menginternalisasi nilai, norma, dan etika akademik \n
-CPL-10:Menginternalisasi semangat kemandirian, kejuangan, dan kewirausahaan \n
+CPL-10:Menginternalisasi semangat kemandirian, kejuangan, dan kewirausahaan \n\n
+    PENGETAHUAN \n\n
 CPL-11:Menguasai prinsip dan metode matematika untuk menyelesaikan masalah komputasi \n
 CPL-12:Menguasai prinsip pengembangan algoritma dan berbagai konsep bahasa pemrograman untuk penyelesaian masalah \n
 CPL-13:Menguasai konsep dan prinsip-prinsip sistem cerdas untuk pengembangan aplikasi sistem cerdas di berbagai bidang \n
 CPL-14:Menguasai konsep-konsep dasar pengembangan perangkat lunak, memiliki kecakapan yang berhubungan dengan proses pengembangan perangkat lunak, serta mampu membuat program untuk meningkatkan efektivitas penggunaan komputer untuk memecahkan masalah \n
 CPL-15:Menguasai konsep arsitektur dan organisasi komputer serta memanfaatkannya untuk menunjang aplikasi komputer \n
 CPL-16:Memahami prinsip dasar sistem jaringan komputer untuk mengembangkan aplikasi berbasis jaringan dengan menerapkan manajemen informasi dan keamanan jaringan \n
-CPL-17:Memiliki pengetahuan akan perkembangan teknologi terkini dan cara pemanfaatannya di berbagai bidang \n
+CPL-17:Memiliki pengetahuan akan perkembangan teknologi terkini dan cara pemanfaatannya di berbagai bidang \n \n
+    KETERAMPILAN UMUM \n\n
 CPL-18:Mampu menerapkan pemikiran logis, kritit sistematis, dan inovatif dalam konteks pengembangan atau implementasi ilmu pengetahuan dan Teknologi yang memperhatikan dan menerapkan nilai humaniora yang sesuai dengan bidang keahliannya \n
 CPL-19:Mampu menunjukkan kinerja mandiri, bermutu, dan terukur \n
 CPL-20:Mampu mengkaji implikasi pengembangan atau implementasi ilmu pengetahuan teknologi yang memperhatikan dan menerapkan nilai humaniora sesuai keahliannya berdasarkan kaidah, tata cara, dan etika ilmiah dalam rangka menghasilkan solusi, gagasan, desain, atau kritik seni \n
@@ -54,7 +57,8 @@ CPL-23:Mampu memelihara dan mengembangkan jaringan kerja dengan pembimbing, kole
 CPL-24:Mampu bertanggung jawab atas pencapaian hasil kerja kelompok dan melakukan supervisi dan evaluasi terhadap penyelesaian pekerjaan yang ditugaskan kepada pekerja yang berada di bawah tanggung jawabnya \n
 CPL-25:Mampu melakukan proses evaluasi diri kelompok kerja yang berada di bawah tanggung jawabnya dan mampu mengelola pembelajaran secara mandiri \n
 CPL-26:Mampu mendokumentasikan, menyimpan, mengamankan, dan menentukan kembali data untuk menjamin kesahihan dan mencegah plagiasi \n
-CPL-27:Memiliki kemampuan (pengelolaan) manajerial tim dan kerja sama (team work), manajemen diri, mampu berkomunikasi baik lisan maupun tertulis dengan baik dan mampu melakukan presentasi \n
+CPL-27:Memiliki kemampuan (pengelolaan) manajerial tim dan kerja sama (team work), manajemen diri, mampu berkomunikasi baik lisan maupun tertulis dengan baik dan mampu melakukan presentasi \n \n
+    KETERAMPILAN KHUSUS \n\n
 CPL-28:Mampu menerapkan kewirausahaan berbasis teknologi informasi dan komunikasi \n
 CPL-29:Mampu membuat dan mengintegrasikan aplikasi berbasis desktop, web, atau mobile yang berestetika, komunikatif, dinamis, dan interaktif \n
 CPL-30:Mampu membangun intelligent systems dan aplikasinya untuk mempermudah kehidupan manusia serta menciptakan peluang wirausaha \n

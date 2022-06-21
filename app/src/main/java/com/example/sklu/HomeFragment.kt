@@ -31,7 +31,8 @@ class HomeFragment(val mContext: Context,val items: ArrayList<Plo>?,val main: Ho
         super.onViewCreated(view, savedInstanceState)
         val llm = LinearLayoutManager(mContext)
         llm.orientation = LinearLayoutManager.VERTICAL
-        val itemAdapter = PloAdapter(mContext, items, main)
+        val itemAdapter = PloAdapter(mContext, items, main,"home")
+        itemAdapter.notifyDataSetChanged()
         recycler.setLayoutManager(llm)
         recycler.adapter = itemAdapter
     }

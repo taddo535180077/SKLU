@@ -2,6 +2,7 @@ package com.example.sklu
 
 import android.content.Context
 import android.util.Log
+import android.widget.Toast
 import com.example.sklu.Database.CloDatabase
 import com.example.sklu.Model.Plo
 import java.io.Serializable
@@ -11,9 +12,11 @@ class Decision(val mContext: Context) {
 
     private var db = CloDatabase(mContext)
     private val idPerson = Function.getPref(mContext, "id")
+    private val idCmp = Function.getPref(mContext, "idCmp")
+    private var username = ""
 
-    fun getPlo(type: String): String {
-
+    fun getPlo(type: String, username: String): String {
+        this.username = username
         when (type) {
             "CPL-1" -> return cpl1()
             "CPL-2" -> return cpl2()
@@ -54,64 +57,63 @@ class Decision(val mContext: Context) {
     }
 
     private fun cpl1(): String {
-        val humanoria = arrayOf("A", "NA", "NA", "Humaniora")
+        val humanoria = arrayOf("A", "A", "NA", "Humaniora")
         return decition(idPerson, humanoria as Array<Serializable>)
     }
 
     private fun cpl2(): String {
-        val humanoria = arrayOf("A", "NA", "NA", "Humaniora")
+        val humanoria = arrayOf("A", "A", "NA", "Humaniora")
 
         return decition(idPerson, humanoria as Array<Serializable>)
     }
 
     private fun cpl3(): String {
-        val humanoria = arrayOf("A", "NA", "NA", "Humaniora")
-        val industri = arrayOf(humanoria, "NA", "NA", "Industry Internship")
+        val industri = arrayOf("A", "NA", "NA", "Industry Internship")
+        val comp = arrayOf("A", industri, "NA", "Computer And Society")
+        val humanoria = arrayOf("A", "A", comp, "Humaniora")
 
-        return decition(idPerson, industri as Array<Serializable>)
+        return decition(idPerson, humanoria as Array<Serializable>)
     }
 
     private fun cpl4(): String {
-        val humanoria = arrayOf("A", "NA", "NA", "Humaniora")
-        val industri = arrayOf(humanoria, "NA", "NA", "Industry Internship")
+        val industri = arrayOf("A", "NA", "NA", "Industry Internship")
+        val humanoria = arrayOf("A", industri, "NA", "Humaniora")
 
-        return decition(idPerson, industri as Array<Serializable>)
+        return decition(idPerson, humanoria as Array<Serializable>)
     }
 
     private fun cpl5(): String {
-        val humanoria = arrayOf("A", "NA", "NA", "Humaniora")
-        val industri = arrayOf(humanoria, "NA", "NA", "Industry Internship")
+        val industri = arrayOf("A", "NA", "NA", "Industry Internship")
+        val humanoria = arrayOf("A", industri, "NA", "Humaniora")
 
-        return decition(idPerson, industri as Array<Serializable>)
+        return decition(idPerson, humanoria as Array<Serializable>)
     }
 
     private fun cpl6(): String {
-        val humanoria = arrayOf("A", "A", "NA", "Humaniora")
-        val bachelor = arrayOf(humanoria, "A", "NA", "Bachelor Thesis")
+        val bachelor = arrayOf("A", "A", "NA", "Bachelor Thesis")
 
         return decition(idPerson, bachelor as Array<Serializable>)
     }
 
     private fun cpl7(): String {
-        val humanoria = arrayOf("A", "NA", "NA", "Humaniora")
-        val industri = arrayOf(humanoria, "NA", "NA", "Industry Internship")
+        val industri = arrayOf("A", "NA", "NA", "Industry Internship")
+        val humanoria = arrayOf("A", industri, "NA", "Humaniora")
 
-        return decition(idPerson, industri as Array<Serializable>)
+        return decition(idPerson, humanoria as Array<Serializable>)
     }
 
     private fun cpl8(): String {
-        val computation2 = arrayOf("A", "NA", "NA", "Computation 2")
-        val computation1 = arrayOf("A", "A", computation2, "Computation 1")
-        val nlp = arrayOf(computation1, "A", "NA", "Natural Language Processing")
-        val computation = arrayOf("A", "NA", "NA", "Computation 1")
-        val database = arrayOf(nlp, computation, "NA", "Database Systems")
+        val intro = arrayOf("A", "A", "NA", "Introduction to Algorithm")
+        val web = arrayOf("NA", intro, "null", "Web Progamming")
+        val comp1 = arrayOf("NA", "A", "null", "Computation 1")
+        val game = arrayOf(comp1, web, "NA", "Game Design")
+        val ai = arrayOf("A", game, "null", "Artificial Neural Network")
 
-        return decition(idPerson, database as Array<Serializable>)
+        return decition(idPerson, ai as Array<Serializable>)
     }
 
     private fun cpl9(): String {
-        val industri = arrayOf("A", "A", "NA", "Industry Internship")
-        val thesis = arrayOf(industri, "A", "NA", "Bachelor Thesis")
+        val thesis = arrayOf( "A", "A", "NA", "Bachelor Thesis")
 
         return decition(idPerson, thesis as Array<Serializable>)
     }
@@ -124,187 +126,297 @@ class Decision(val mContext: Context) {
     }
 
     private fun cpl11(): String {
-        val industri = arrayOf("A", "NA", "NA", "Industry Internship")
-        val software = arrayOf(industri, "NA", "NA", "Software Development")
+        val datstruct1 = arrayOf("A", "NA", "NA", "Data Structure")
+        val comp1 = arrayOf("A", "A", "NA", "Computation 1")
+        val comp11 = arrayOf("A", "NA", "NA", "Computation 1")
+        val indus1 = arrayOf(datstruct1, "NA", "NA", "Industry Internship")
+        val indus11 = arrayOf(comp1, "NA", "NA", "Industry Internship")
+        val datstruct11 = arrayOf("A", "A", comp11, "Data Structure")
+        val comp2 = arrayOf(datstruct11, indus11, indus1, "Computation 2")
 
-        return decition(idPerson, software as Array<Serializable>)
+        return decition(idPerson, comp2 as Array<Serializable>)
     }
 
     private fun cpl12(): String {
-        val java = arrayOf("A", "NA", "NA", "Java Programming")
-        val datstruct = arrayOf("A", java, java, "Data Structure")
-        val java2 = arrayOf("NA", "A", "NA", "Java Programming")
-        val algo = arrayOf(datstruct, java2, "NA", "Introduction to Algorithm")
-        val nlp = arrayOf(algo, "NA", "NA", "Natural Language Processing")
 
-        return decition(idPerson, nlp as Array<Serializable>)
+        val datstruct = arrayOf("A", "NA", "NA", "Data Structure")
+        val game = arrayOf(datstruct, "NA", "NA", "Game Design")
+        val algo = arrayOf("A", "NA", "NA", "Introduction to Algorithm")
+        val game2 = arrayOf("A", "A", "NA", "Game Design")
+        val nlp = arrayOf(algo, "null", game, "Natural Language Processing")
+        val java = arrayOf("A", game2, nlp, "Java Programming")
+
+        return decition(idPerson, java as Array<Serializable>)
     }
 
     private fun cpl13(): String {
-        val industri = arrayOf("A", "A", "NA", "Industry Internship")
-        val data = arrayOf("A", "NA", "NA", "Data Min. And Data Analytics")
-        val ml = arrayOf(industri, data, "NA", "Machine Learning")
 
-        return decition(idPerson, ml as Array<Serializable>)
+        val data = arrayOf("A", "NA", "NA", "Data Min. And Data Analytics")
+        val ml = arrayOf(data, "NA", "NA", "Machine Learning")
+        val industri = arrayOf("A", "NA", "NA", "Industry Internship")
+        val ai = arrayOf(industri, "null", ml, "Artificial Intelligence")
+        val ann = arrayOf("A", "null", ai, "Artificial Neural Network")
+
+        return decition(idPerson, ann as Array<Serializable>)
     }
 
     private fun cpl14(): String {
-        val datstruct = arrayOf("A", "NA", "NA", "Data Structure")
-        val mobprog = arrayOf(datstruct, "NA", "NA", "Mobile Programming")
+        val techno = arrayOf("A", "NA", "NA", "Technopreneurship")
+        val database = arrayOf("A", techno, "null", "Database Systems")
+        val industri = arrayOf(database, "A", "A", "Industry Internship")
+        val mobprog = arrayOf(industri, "NA", "NA", "Mobile Programming")
 
-        return decition(idPerson, mobprog as Array<Serializable>)
+        val mobprog2 = arrayOf("A", "A", "NA", "Mobile Programming")
+        val database2 = arrayOf(mobprog2, "NA", "NA", "Database Systems")
+        val os = arrayOf(database2, mobprog, "NA", "Introduction to Operating Systems")
+
+        val software = arrayOf("A", "null", "NA", "Software Development")
+        val big = arrayOf("null", software, "NA", "Big Data")
+        val database3 = arrayOf(big, "A", "NA", "Database Systems")
+        val mobprog3 = arrayOf(database3, "A", "NA", "Mobile Programming")
+        val intro = arrayOf(mobprog3, "NA", "NA", "Introduction to Algorithm")
+
+        val datstruct = arrayOf(intro, os, "NA", "Data Structure")
+
+        return decition(idPerson, datstruct as Array<Serializable>)
     }
 
     private fun cpl15(): String {
         val industri = arrayOf("A", "NA", "NA", "Industry Internship")
-        val comp = arrayOf(industri, "NA", "NA", "Computer System")
+        val comp = arrayOf("A", industri, "NA", "Computer System")
 
         return decition(idPerson, comp as Array<Serializable>)
     }
 
     private fun cpl16(): String {
-        val distributed = arrayOf("A", "null", "NA", "Distributed System")
-        val industri = arrayOf(distributed, "NA", "NA", "Industry Internship")
-
-        return decition(idPerson, industri as Array<Serializable>)
-    }
-    private fun cpl17(): String {
-        val trend = arrayOf("NA", "A", "null", "IT trends")
-        val nlp = arrayOf("A", trend, "A", "Natural Language Processing")
-        val web = arrayOf("A", "NA", nlp, "Web Development")
-
-        return decition(idPerson, web as Array<Serializable>)
-    }
-
-    private fun cpl18(): String {
-        val database = arrayOf("A", "null", "NA", "Database Systems")
-        val datamin = arrayOf("A", "A", database, "Data Min. And Data Analytics")
-        val database2 = arrayOf("A", "NA", "NA", "Database Systems")
-        val techno = arrayOf(datamin, database2, "NA", "Technopreneurship")
-
-        return decition(idPerson, techno as Array<Serializable>)
-    }
-    private fun cpl19(): String {
-        val comp2 = arrayOf("A", "null", "NA", "Computation 2")
-        val comp1 = arrayOf("A", "NA", "NA", "Computation 1")
-        val comp11 = arrayOf(comp2, "NA", "NA", "Computation 1")
-        val mobprog = arrayOf("A", "NA", "NA", "Mobile Programming")
-        val ai = arrayOf("A", comp1, comp11, "Artificial Intelligence")
-        val comp = arrayOf(mobprog, "A", "NA", "Computation 1")
-        val ml = arrayOf("A", ai, comp, "Machine Learning")
-
-        return decition(idPerson, ml as Array<Serializable>)
-    }
-    private fun cpl20(): String {
-        val human = arrayOf("A", "NA", "NA", "Humaniora")
-        val industry = arrayOf("A", human, "NA", "Industry Internship")
-        val thesis = arrayOf(industry, "A", "NA", "Bachelor Thesis")
-
-        return decition(idPerson, thesis as Array<Serializable>)
-    }
-    private fun cpl21(): String {
-        val thesis = arrayOf("null", "null", "null", "Bachelor Thesis")
-
-        return decition(idPerson, thesis as Array<Serializable>)
-    }
-    private fun cpl22(): String {
-        val bpr = arrayOf("A", "NA", "NA", "Business process reengineering")
-        val bigData = arrayOf("NA", bpr, "null", "Big Data")
-        val gameDesign = arrayOf("A", "A", bigData, "Game Design")
-        val dataMin = arrayOf("A", "NA", "NA", "Data Min. And Data Analytics")
-        val nlp = arrayOf(gameDesign, dataMin, "NA", "Natural Language Processing")
-
-        return decition(idPerson, nlp as Array<Serializable>)
-    }
-    private fun cpl23(): String {
-        val industry = arrayOf("null", "null", "null", "Industry Internship")
+        val dist = arrayOf("A", "NA", "A", "Distributed System")
+        val industry = arrayOf(dist, "A", "NA", "Industry Internship")
 
         return decition(idPerson, industry as Array<Serializable>)
     }
-    private fun cpl24(): String {
-        val mobprog = arrayOf("A", "NA", "A", "Mobile Programming")
-        val web = arrayOf(mobprog, "NA", "NA", "Web Development")
-        val techno = arrayOf("A", "null", "NA", "Technopreneurship")
-        val ml = arrayOf("A", techno, web, "Machine Learning")
-        val nlp = arrayOf(ml, "NA", "NA", "Natural Language Processing")
+    private fun cpl17(): String {
+
+        val web = arrayOf("A", "NA", "NA", "Web Progamming")
+        val os = arrayOf("null", web, "NA", "Introduction to Operating Systems")
+
+        val trends = arrayOf("A", "NA", "NA", "IT trends")
+
+        val techno = arrayOf(os, "A", trends, "Technopreneurship")
+
+        val comp = arrayOf("A", "A", techno, "Computer And Society")
+        val mobprog = arrayOf("A", "NA", "NA", "Mobile Programming")
+
+        val vision = arrayOf(comp, mobprog, "NA", "Computer Vision")
+
+        return decition(idPerson, vision as Array<Serializable>)
+    }
+
+    private fun cpl18(): String {
+
+        val bigdata = arrayOf("NA", "null", "A", "Big Data")
+        val ml = arrayOf("NA", bigdata, "NA", "Machine Learning")
+
+        val web = arrayOf("A", "NA", "NA", "Web Progamming")
+
+        val thesis = arrayOf(web, "null", ml, "Bachelor Thesis")
+
+        val database = arrayOf("A", "NA", "NA", "Database Systems")
+        val big = arrayOf("A", database, "NA", "Big Data")
+
+        val game = arrayOf("A", big, thesis, "Game Design")
+
+        val neutral = arrayOf("A", "null", game, "Artificial Neural Network")
+
+        return decition(idPerson, neutral as Array<Serializable>)
+    }
+
+    private fun cpl19(): String {
+        val trends = arrayOf("NA", "A", "null", "IT trends")
+        val comp1 = arrayOf("NA", trends, "NA", "Computation 1")
+        val intro = arrayOf("A", "null", "NA", "Introduction to Algorithm")
+
+        val computersystem = arrayOf(intro, comp1, "NA", "Computer System")
+
+        val vision = arrayOf(computersystem, "NA", "NA", "Computer Vision")
+        val ai = arrayOf("A", "null", vision, "Artificial Intelligence")
+
+        val comp11 = arrayOf("A", "NA", "NA", "Computation 1")
+        val webdevelop = arrayOf("A", "A", comp11, "Web Development")
+        val ann = arrayOf(webdevelop, "null", ai, "Artificial Neural Network")
+
+        return decition(idPerson, ann as Array<Serializable>)
+    }
+    private fun cpl20(): String {
+        val comp = arrayOf("A", "A", "A", "Computer And Society")
+        val industry = arrayOf(comp, "A", "null", "Industry Internship")
+        val thesis = arrayOf(industry, "A", "A", "Bachelor Thesis")
+
+        val thesis2 = arrayOf("A", "null", "NA", "Bachelor Thesis")
+        val comp2 = arrayOf(thesis2, "NA", "NA", "Computer And Society")
+
+        val humaniora = arrayOf(thesis, comp2, "NA", "Humaniora")
+
+        return decition(idPerson, humaniora as Array<Serializable>)
+    }
+
+    private fun cpl21(): String {
+        val thesis = arrayOf("A", "A", "NA", "Bachelor Thesis")
+
+        return decition(idPerson, thesis as Array<Serializable>)
+    }
+
+    private fun cpl22(): String {
+        val bigData = arrayOf("NA", "null", "NA", "Big Data")
+        val bpr = arrayOf(bigData, "null", "NA", "Business process reengineering")
+        val industry = arrayOf("NA", bpr, "NA", "Industry Internship")
+
+        val bigData2 = arrayOf("A", "A", "NA", "Big Data")
+        val industry2 = arrayOf(bigData2, "NA", "NA", "Industry Internship")
+
+        val gameDesign = arrayOf("A", industry2, industry, "Game Design")
+
+        val nlp = arrayOf("A", "A", gameDesign, "Natural Language Processing")
 
         return decition(idPerson, nlp as Array<Serializable>)
     }
+
+    private fun cpl23(): String {
+        val industry = arrayOf("A", "NA", "NA", "Industry Internship")
+
+        return decition(idPerson, industry as Array<Serializable>)
+    }
+
+    private fun cpl24(): String {
+        val java = arrayOf("A", "A", "NA", "Java Programming")
+        val techno = arrayOf("A", "NA", "NA", "Technopreneurship")
+        val softwaredevelop = arrayOf("A", "NA", "NA", "Software Development")
+        val ml = arrayOf(softwaredevelop, techno, java, "Machine Learning")
+
+        val industry = arrayOf("A", "NA", "NA", "Industry Internship")
+        val techno2 = arrayOf("A", "A", industry, "Technopreneurship")
+
+        val nlp = arrayOf(techno2, "A", ml, "Natural Language Processing")
+
+        return decition(idPerson, nlp as Array<Serializable>)
+    }
+
     private fun cpl25(): String {
-        val web = arrayOf("A", "NA", "NA", "Web Development")
-        val java = arrayOf(web, "NA", "NA", "Java Programming")
-        val ml = arrayOf("A", java, "NA", "Machine Learning")
-        val ml2 = arrayOf("A", "NA", "NA", "Machine Learning")
-        val mobprog = arrayOf(ml, ml2, "NA", "Mobile Programming")
+        val java = arrayOf("A", "null", "NA", "Java Programming")
+        val mobprog = arrayOf(java, "A", "A", "Mobile Programming")
+        val distribute = arrayOf(mobprog, "A", "NA", "Distributed System")
+        val ml = arrayOf("A", "A", distribute, "Machine Learning")
+        val java2 = arrayOf("A", "A", "NA", "Java Programming")
+        val web = arrayOf(ml, java2, "A", "Web Development")
 
-        return decition(idPerson, mobprog as Array<Serializable>)
+        val ml2 = arrayOf("A", "null", "NA", "Machine Learning")
+        val java3 = arrayOf("null", ml2, "NA", "Java Programming")
+
+        val java4 = arrayOf("A", "A", "NA", "Java Programming")
+
+        val nlp = arrayOf(web, java4, java3, "Natural Language Processing")
+
+        return decition(idPerson, nlp as Array<Serializable>)
     }
+
     private fun cpl26(): String {
-        val techno = arrayOf("A", "NA", "NA", "Technopreneurship")
-        val comp = arrayOf("NA", techno, "NA", "Computer System")
-        val trend = arrayOf("A", "null", "NA", "IT trends")
-        val ai = arrayOf("A", trend, comp, "Artificial Intelligence")
-        val thesis = arrayOf(ai, "A", "NA", "Bachelor Thesis")
 
-        return decition(idPerson, thesis as Array<Serializable>)
+        val software = arrayOf("A", "NA", "NA", "Software Development")
+        val trend = arrayOf("NA", software, "null", "IT trends")
+        val thesis = arrayOf(trend, "null", "NA", "Bachelor Thesis")
+        val ai = arrayOf("A", "null", thesis, "Artificial Intelligence")
+
+        val ann = arrayOf("A", "null", ai, "Artificial Neural Network")
+
+        return decition(idPerson, ann as Array<Serializable>)
     }
+
     private fun cpl27(): String {
-        val datamin = arrayOf("A", "null", "NA", "Data Min. And Data Analytics")
-        val thesis = arrayOf("A", "null", "NA", "Bachelor Thesis")
-        val bpr = arrayOf(datamin, "NA", "NA", "Business process reengineering")
-        val mobprog = arrayOf("A", thesis, "NA", "Mobile Programming")
-        val ml = arrayOf("A", bpr, mobprog, "Machine Learning")
+        val industry = arrayOf("NA", "A", "null", "Industry Internship")
+        val web = arrayOf("NA", "A", industry, "Web Development")
+        val ai = arrayOf(web, "null", "NA", "Artificial Intelligence")
 
-        return decition(idPerson, ml as Array<Serializable>)
+        val ann = arrayOf("A", "null", ai, "Artificial Neural Network")
+
+        return decition(idPerson, ann as Array<Serializable>)
     }
+
     private fun cpl28(): String {
-        val industry = arrayOf("A", "NA", "NA", "Industry Internship")
-        val game = arrayOf("A", industry, "NA", "Game Design")
-        val thesis = arrayOf(game, "A", "NA", "Bachelor Thesis")
+        val techno = arrayOf("A", "NA", "NA", "Technopreneurship")
+        val industry = arrayOf(techno, "null", "NA", "Industry Internship")
+        val bpr = arrayOf("A", industry, "null", "Business process reengineering")
+
+        val techno2 = arrayOf("A", "NA", "A", "Technopreneurship")
+
+        val game = arrayOf(techno2, bpr, "NA", "Game Design")
+
+        val thesis = arrayOf("A", game, "NA", "Bachelor Thesis")
 
         return decition(idPerson, thesis as Array<Serializable>)
     }
+
     private fun cpl29(): String {
-        val comp1 = arrayOf("A", "null", "NA", "Computation 1")
-        val game = arrayOf("A", "A", comp1, "Game Development")
-        val techno = arrayOf("A", "NA", "NA", "Technopreneurship")
-        val nlp = arrayOf(game, "A", "NA", "Natural Language Processing")
-        val nlp2 = arrayOf(techno, "NA", "A", "Natural Language Processing")
-        val algo = arrayOf(nlp, nlp2, "NA", "Introduction to Algorithm")
+        val comp1 = arrayOf("A", "NA", "null", "Computation 1")
+        val techno = arrayOf("A", "A", comp1, "Technopreneurship")
 
-        return decition(idPerson, algo as Array<Serializable>)
+        val game = arrayOf("A", "null", "NA", "Game Development")
+
+        val ann = arrayOf(techno, "null", game, "Artificial Neural Network")
+
+        return decition(idPerson, ann as Array<Serializable>)
     }
+
     private fun cpl30(): String {
-        val industry = arrayOf("A", "NA", "NA", "Industry Internship")
-        val nlp = arrayOf(industry, "NA", "NA", "Natural Language Processing")
-        val ai = arrayOf(nlp, "NA", "NA", "Artificial Intelligence")
-        val ml = arrayOf("A", "A", ai, "Machine Learning")
-        val techno = arrayOf(ml, "NA", "NA", "Technopreneurship")
+        val web = arrayOf("A", "NA", "NA", "Web Development")
+        val ai = arrayOf("A", "A", web, "Artificial Intelligence")
 
-        return decition(idPerson, techno as Array<Serializable>)
+        val nlp = arrayOf("null", "A", "NA", "Natural Language Processing")
+
+        val ann = arrayOf(ai, "null", nlp, "Artificial Neural Network")
+
+        return decition(idPerson, ann as Array<Serializable>)
     }
+
     private fun cpl31(): String {
-        val web = arrayOf("A", "A", "NA", "Web Development")
-        val datamin = arrayOf(web, "NA", "NA", "Data Min. And Data Analytics")
-        val industry = arrayOf("A", "A", "NA", "Industry Internship")
-        val ml = arrayOf(industry, datamin, "NA", "Machine Learning")
+        val industry = arrayOf("A", "NA", "NA", "Industry Internship")
+        val web = arrayOf(industry, "NA", "NA", "Web Development")
+        val web2 = arrayOf("NA", "NA", "NA", "Web Development")
+        val bigdata  = arrayOf(web, web2, "NA", "Big Data")
+
+        val datamin  = arrayOf(bigdata, "NA", "NA", "Data Min. And Data Analytics")
+
+        val datamin2  = arrayOf("A", "A", "NA", "Data Min. And Data Analytics")
+        val web3 = arrayOf("A", datamin2, "NA", "Web Development")
+
+        val ml = arrayOf("A", web3, datamin, "Machine Learning")
 
         return decition(idPerson, ml as Array<Serializable>)
     }
+
     private fun cpl32(): String {
-        val industry = arrayOf("null", "null", "null", "Industry Internship")
+        val industry = arrayOf("A", "NA", "NA", "Industry Internship")
 
         return decition(idPerson, industry as Array<Serializable>)
     }
     private fun cpl33(): String {
-        val techno = arrayOf("null", "null", "null", "Technopreneurship")
+        val techno = arrayOf("A", "NA", "NA", "Technopreneurship")
 
         return decition(idPerson, techno as Array<Serializable>)
     }
 
     //recursive function
-    fun decition(idPerson: String, clos: Array<Serializable>): String {
-        var clo = db.getClo(clos[3].toString(), idPerson)
+    fun decition(idPersons: String, clos: Array<Serializable>): String {
+        var idPerson = ""
+
+        var username = ""
+        if(this.username==""){
+            username = Function.getPref(mContext, "username")
+            idPerson = this.idPerson
+        }else{
+            username = this.username
+            idPerson = this.idCmp
+        }
+
+        var clo = db.getClo(clos[3].toString(), idPerson, username)
         var type = ""
         var score = clo.score!!.toFloat()
 
@@ -333,9 +445,12 @@ class Decision(val mContext: Context) {
     }
 
     private fun getResult(result: String): String {
-        if (result == "A") return "LULUS"
-        else if (result == "NA") return "TIDAK LULUS"
-        return "none"
+        var res = ""
+        if (result == "A") res =  "LULUS"
+        else if (result == "NA") res =  "TIDAK LULUS"
+        else res = "none"
+
+        return res
     }
 
 

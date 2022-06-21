@@ -9,27 +9,28 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sklu.Adapter.CloAdapter
-import com.example.sklu.Adapter.PloAdapter
 import com.example.sklu.Database.CloDatabase
 import com.example.sklu.Model.Clo
 import com.example.sklu.Model.Plo
 import kotlinx.android.synthetic.main.fragment_clo.*
 import kotlinx.android.synthetic.main.fragment_fav.*
 import kotlinx.android.synthetic.main.fragment_fav.recycler
+import java.math.RoundingMode
+import java.text.DecimalFormat
 
 
-class CloFragment(val items: ArrayList<Clo>,val homeActivity: HomeActivity, val type:String) : Fragment() {
+class CloFragment(val items: ArrayList<Clo>, val homeActivity: HomeActivity, val type: String) :
+    Fragment() {
     val itemAdapter = CloAdapter(homeActivity, items)
 
-    private fun getData(){
+    var average = ""
+
+    private fun getData() {
         val llm = LinearLayoutManager(homeActivity)
         llm.orientation = LinearLayoutManager.VERTICAL
         recycler.setLayoutManager(llm)
         recycler.adapter = itemAdapter
 
-        var db = CloDatabase(homeActivity)
-        var clo = db.getClo("Industry Intership", "1")
-        Log.e("RESULT====GET", "getData: ${clo.score}", )
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,10 +54,29 @@ class CloFragment(val items: ArrayList<Clo>,val homeActivity: HomeActivity, val 
 
         submit.setOnClickListener {
             itemAdapter.updateAll()
+
             Toast.makeText(homeActivity, "Data Berhasil Di Update!", Toast.LENGTH_SHORT).show()
             homeActivity.goToClo(type)
         }
 
-        result.text = Decision(homeActivity).getPlo(type)
+        var res = Decision(homeActivity).getPlo(type, "")
+
+        var total: Float = 0.0f
+        for (item in items) {
+
+            total = total!!.toFloat() + item.score!!.toFloat()
+
+        }
+        if (total == null) average = ""
+        else {
+            total = total / items!!.size
+        }
+        val df = DecimalFormat("#.##")
+        df.roundingMode = RoundingMode.CEILING
+        val results = df.format(total).toDouble()
+
+
+        result.text = "$res, $results"
     }
+
 }

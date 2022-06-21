@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.widget.Toast
 import com.example.sklu.Database.PersonDatabase
 import com.example.sklu.Model.Person
@@ -73,7 +74,6 @@ class MainActivity : AppCompatActivity() {
         }catch (e: Exception){
             e.printStackTrace()
         }
-
         setData(person!!)
 
     }
@@ -84,6 +84,7 @@ class MainActivity : AppCompatActivity() {
     }
     private fun goToMain(){
         val name = func.getPref(this, "name")
+
         if(name!="") {
             var intent = Intent(this@MainActivity, HomeActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)

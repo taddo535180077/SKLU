@@ -7,112 +7,153 @@
     android:background="#FFF5E3"
     tools:context=".RegisterActivity">
 
-    <ImageView
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/logo" />
-
-    <RelativeLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center">
+>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <LinearLayout
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/logo" />
+
+
+        <RelativeLayout
+            android:layout_below="@id/logo"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:gravity="center">
+
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
+                android:gravity="center"
                 android:orientation="vertical">
 
-                <TextView
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="20dp"
+                        android:fontFamily="@font/bold"
+                        android:text="Register"
+                        android:textColor="#486B1C"
+                        android:textFontWeight="900"
+                        android:textSize="24dp" />
+
+                    <EditText
+                        android:id="@+id/email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="15dp"
+                        android:background="@drawable/bg"
+                        android:hint="Email"
+                        android:inputType="text"
+                        android:maxLength="25" />
+
+
+                    <EditText
+                        android:id="@+id/pass"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="15dp"
+                        android:background="@drawable/bg"
+                        android:hint="Password"
+                        android:inputType="textPassword"
+                        android:maxLength="25" />
+
+
+                    <EditText
+                        android:id="@+id/pass2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="15dp"
+                        android:background="@drawable/bg"
+                        android:hint="Confirm Password"
+                        android:inputType="textPassword"
+                        android:maxLength="25" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/registerMhs"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"
-                    android:fontFamily="@font/bold"
-                    android:text="Register"
-                    android:textColor="#486B1C"
-                    android:textFontWeight="900"
-                    android:textSize="24dp" />
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/bg2"
+                    android:text="Daftar sebagai Mahasiswa"
+                    android:textColor="@color/black" />
 
-                <EditText
-                    android:id="@+id/email"
+                <Button
+                    android:id="@+id/registerCmp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/bg2"
+                    android:text="Daftar sebagai Perusahaan"
+                    android:textColor="@color/black" />
+
+                <Button
+                    android:id="@+id/admin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/bg2"
+                    android:text="Daftar sebagai Pengguna Lulusan"
+                    android:textColor="@color/black" />
+
+                <Button
+                    android:id="@+id/register"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:text="Have a account? Sign In"
+                    android:textColor="#DD3A46"
+                    android:textSize="14dp" />
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="15dp"
-                    android:background="@drawable/bg"
-                    android:hint="Email"
-                    android:inputType="text"
-                    android:maxLength="25" />
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="30dp"
+                    android:background="@drawable/bg2"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="left"
+                        android:text="
+PENJELASAN PENTING SAAT REGISTER!! MOHON DIBACA TERLEBIH DAHULU!!\n
+Pada Daftar Sebagai Mahasiswa, anda hanya dapat mengecek Capaian Pembelajaran Lulusan anda.\n
+Pada Daftar Sebagai Pengguna Lulusan, anda mendapatkan beberapa fitur menarik, seperti:\n
+1.	Anda dapat memilih CPL (Capaian Pembelajaran Lulusan) favorite yang anda butuhkan dengan menekan symbol bintang, dan CPL tersebut akan muncul di menu Favorite.\n
+2.	Anda dapat melihat hasil dari semua calon pekerja yang menggunakan aplikasi ini berdasarkan CPL yang telah anda pilih.\n
+3.	Hanya anda yang daftar sebagai Admin Perusahaan yang dapat memilih CPL favorite kalian, dan melihat hasil dari semua calon pekerja.\n
+Setelah Daftar Sebagai Pengguna Lulusan anda harus mendaftarkan email yang akan dipakai oleh calon pekerja sebagai pengukuran untuk masuk ke perusahaan anda pada Daftar Sebagai Perusahaan. *\n
+Pada Daftar Sebagai Perusahaan, anda berarti sebagai perusahaan ingin menggunakan email anda sendiri untuk para pelamar pekerjaan.\n \n
+Sekian Terima Kasih 😊
+" />
+                </LinearLayout>
 
-                <EditText
-                    android:id="@+id/pass"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="15dp"
-                    android:background="@drawable/bg"
-                    android:hint="Password"
-                    android:inputType="textPassword"
-                    android:maxLength="25" />
-
-
-                <EditText
-                    android:id="@+id/pass2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="15dp"
-                    android:background="@drawable/bg"
-                    android:hint="Confirm Password"
-                    android:inputType="textPassword"
-                    android:maxLength="25" />
             </LinearLayout>
 
-            <Button
-                android:id="@+id/registerMhs"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/bg2"
-                android:text="Daftar sebagai Mahasiswa"
-                android:textColor="@color/black" />
-
-            <Button
-                android:id="@+id/registerCmp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/bg2"
-                android:text="Daftar sebagai Perusahaan"
-                android:textColor="@color/black" />
-
-            <Button
-                android:id="@+id/admin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/bg2"
-                android:text="Daftar sebagai Admin"
-                android:textColor="@color/black" />
-
-            <Button
-                android:id="@+id/register"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:text="Have a account? Sign In"
-                android:textColor="#DD3A46"
-                android:textSize="14dp" />
-
-
-        </LinearLayout>
+        </RelativeLayout>
     </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
 </RelativeLayout>

@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sklu.Database.CloDatabase
+import com.example.sklu.Function
 import com.example.sklu.Model.Clo
 import com.example.sklu.R
 
@@ -36,7 +37,6 @@ class CloAdapter : RecyclerView.Adapter<CloAdapter.ViewHolder> {
 
     private fun validateInput(string: String): String{
         var score = string.toFloat()
-        Log.e("SCORE", "validateInput: $score")
         if(score< 0 || score > 4){
             Toast.makeText(mContext, "Maximum Score is 4", Toast.LENGTH_SHORT).show()
             return ""
@@ -79,7 +79,7 @@ class CloAdapter : RecyclerView.Adapter<CloAdapter.ViewHolder> {
                         setValue(pos, temp)
 
                     } catch (e: Exception) {
-
+                        setValue(pos, "0")
                     }
                     holder.score.setSelection(holder.score.text.length)
                     holder.score.addTextChangedListener(this)
@@ -115,31 +115,23 @@ class CloAdapter : RecyclerView.Adapter<CloAdapter.ViewHolder> {
     public fun updateAll() {
         for (i in 0..(items!!.size-1)) {
             var item = items!![i]
-            var grade = ""
-            if (item.score!!.toFloat()>=3.5) grade = "A"
-            else if (item.score!!.toFloat()>=3) grade = "B"
-            else if (item.score!!.toFloat()>=2) grade = "C"
-            else if (item.score!!.toFloat()>=1) grade = "D"
-            else if (item.score!!.toFloat()>=0) grade = "E"
-            else grade = "E"
-            db.updateClo(item.id, item.score, "", grade)
+            if(item.score!!.isEmpty() || item.score!! == "" ){
+                var username = Function.getPref(mContext, "username")
+                db.updateClo(item.id, "0", "", "E", username)
+            }else{
+                var grade = ""
+                if (item.score!!.toFloat()>=3.5) grade = "A"
+                else if (item.score!!.toFloat()>=3) grade = "B"
+                else if (item.score!!.toFloat()>=2) grade = "C"
+                else if (item.score!!.toFloat()>=1) grade = "D"
+                else if (item.score!!.toFloat()>=0) grade = "E"
+                else if (item.score!!.isEmpty()) grade = "E"
+                else grade = "E"
+                var username = Function.getPref(mContext, "username")
+                db.updateClo(item.id, item.score, "", grade, username)
+            }
+
         }
     }
-
-//    private fun update(total: Int, itemId: String){
-//        var dbCart = DatabaseCartHandler(mContext)
-//        var cart = dbCart.getCart(itemId.toInt())
-//
-//        if(cart==null) {
-//            dbCart.addCart(Cart(total.toString(), itemId))
-//        }else{
-//            if(total == 0){
-//                dbCart.deleteCart(itemId)
-//            }else{
-//                dbCart.updateCart(cart, total.toString())
-//            }
-//        }
-//        main.checkCart()
-//    }
 
 }

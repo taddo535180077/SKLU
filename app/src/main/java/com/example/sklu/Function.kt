@@ -20,11 +20,17 @@ class Function {
             editor.putString("name", person.name)
             editor.putString("pass", person.password)
             editor.putString("status", person.role)
+            if(person.role == "cmp"){
+                val cmp = person.id.toString()
+                editor.putString("idCmp", cmp)
+            }
+
+            editor.putString("username", "none")
             editor.apply()
         }
-        fun setPref(mContext: Context, name: String){
+        fun setPref(mContext: Context, name: String, type: String){
             val editor = mContext.getSharedPreferences("PREFS", AppCompatActivity.MODE_PRIVATE).edit()
-            editor.putString("name", name)
+            editor.putString(type, name)
             editor.apply()
         }
         fun logout(mContext: Context){
@@ -34,6 +40,7 @@ class Function {
             editor.putString("name", "none")
             editor.putString("pass", "none")
             editor.putString("status", "none")
+            editor.putString("username", "none")
             editor.apply()
         }
 
@@ -45,6 +52,8 @@ class Function {
             else if (type=="id") return preference.getString("id", "none").toString()
             else if (type=="status") return preference.getString("status", "none").toString()
             else if (type=="pass") return preference.getString("pass", "none").toString()
+            else if (type=="username") return preference.getString("username", "none").toString()
+            else if (type=="idCmp") return preference.getString("idCmp", "none").toString()
 
             return ""
         }
