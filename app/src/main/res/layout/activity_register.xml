@@ -112,7 +112,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/bg2"
-                    android:text="Daftar sebagai Admin"
+                    android:text="Daftar sebagai Pengguna Lulusan"
                     android:textColor="@color/black" />
 
                 <Button
@@ -137,8 +137,18 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="UBAH DISINI" />
+                        android:gravity="left"
+                        android:text="
+PENJELASAN PENTING SAAT REGISTER!! MOHON DIBACA TERLEBIH DAHULU!!\n
+Pada Daftar Sebagai Mahasiswa, anda hanya dapat mengecek Capaian Pembelajaran Lulusan anda.\n
+Pada Daftar Sebagai Pengguna Lulusan, anda mendapatkan beberapa fitur menarik, seperti:\n
+1.	Anda dapat memilih CPL (Capaian Pembelajaran Lulusan) favorite yang anda butuhkan dengan menekan symbol bintang, dan CPL tersebut akan muncul di menu Favorite.\n
+2.	Anda dapat melihat hasil dari semua calon pekerja yang menggunakan aplikasi ini berdasarkan CPL yang telah anda pilih.\n
+3.	Hanya anda yang daftar sebagai Admin Perusahaan yang dapat memilih CPL favorite kalian, dan melihat hasil dari semua calon pekerja.\n
+Setelah Daftar Sebagai Pengguna Lulusan anda harus mendaftarkan email yang akan dipakai oleh calon pekerja sebagai pengukuran untuk masuk ke perusahaan anda pada Daftar Sebagai Perusahaan. *\n
+Pada Daftar Sebagai Perusahaan, anda berarti sebagai perusahaan ingin menggunakan email anda sendiri untuk para pelamar pekerjaan.\n \n
+Sekian Terima Kasih 😊
+" />
                 </LinearLayout>
 
             </LinearLayout>

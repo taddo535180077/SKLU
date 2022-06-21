@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFF5E3"
     tools:context=".InputMhs">
 
     <ImageView
@@ -37,7 +38,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
                     android:fontFamily="@font/bold"
-                    android:text="Input Username Mahasiswa"
+                    android:text="Input Nama Lengkap"
                     android:textColor="#486B1C"
                     android:textFontWeight="900"
                     android:textSize="24dp" />
@@ -48,20 +49,19 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="15dp"
                     android:background="@drawable/bg"
-                    android:hint="Username"
+                    android:hint="Nama Lengkap"
                     android:inputType="text"
                     android:maxLength="25" />
             </LinearLayout>
 
             <Button
-                android:layout_marginTop="15dp"
                 android:id="@+id/submit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Submit"
+                android:layout_marginTop="15dp"
                 android:background="@drawable/bg2"
-                android:textColor="@color/black"
-                />
+                android:text="Submit"
+                android:textColor="@color/black" />
 
 
         </LinearLayout>

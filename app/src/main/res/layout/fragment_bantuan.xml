@@ -27,8 +27,16 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="UBAH DISINI" />
+                android:gravity="left"
+                android:text="Tujuan dan Manfaat Pembuatan Aplikasi
+Bagi Mahasiswa:\n\n
+1.	Dapat Mengukur Capaian Pembelajaran Lulusan mana yang telah di selesaikan dan kuasai.\n\n
+2.	Dapat bersiap untuk mengembangkan diri sebelum terjun di dunia kerja berdasarkan pengukuran CPL.\n\n
+3.	Dapat mengetahui sejauh mana kemampuan anda di bidang IT.\n\n
+Bagi Perusahaan:\n\n
+1.	Mempercepat penyaringan calon pekerja di perusahaan.\n\n
+2.	Mempermudah calon pekerja untuk test awal.
+" />
         </LinearLayout>
 
 
@@ -66,7 +74,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/bg2"
-                android:text="Daftar sebagai Mahasiswa"
+                android:text="Pencet di sini"
                 android:textColor="@color/black" />
 
         </LinearLayout>

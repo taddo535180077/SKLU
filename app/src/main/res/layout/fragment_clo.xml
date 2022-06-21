@@ -48,8 +48,11 @@
 
             <TextView
                 android:id="@+id/result"
+                android:layout_marginTop="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/bold"
                 android:text="RESULT"/>
 
         </LinearLayout>

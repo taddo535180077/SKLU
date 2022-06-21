@@ -37,7 +37,7 @@ class HomeActivity : AppCompatActivity() {
 
         namePerson = func.getPref(this, "name")
         nameText = func.getPref(this, "username")
-        name.text = "Hi, $namePerson $role"
+        name.text = "Hi, $namePerson"
         if (role == "mhs") {
             fav.visibility = View.GONE
         } else {
