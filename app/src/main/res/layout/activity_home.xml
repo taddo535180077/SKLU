@@ -39,11 +39,11 @@
                     android:layout_marginRight="20dp"
                     android:layout_toLeftOf="@+id/logo"
                     android:layout_toRightOf="@+id/hamburger"
-                    android:fontFamily="@font/bold"
-                    android:textAlignment="viewEnd"
                     android:ellipsize="end"
+                    android:fontFamily="@font/bold"
                     android:maxLines="1"
                     android:text="NAME"
+                    android:textAlignment="viewEnd"
                     android:textSize="24dp" />
 
                 <ImageView
@@ -55,12 +55,29 @@
                     android:background="@drawable/logo" />
             </RelativeLayout>
 
-            <ImageView
-                android:id="@+id/back"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:src="@drawable/back" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:src="@drawable/back"
+                    />
+
+                <TextView
+                    android:id="@+id/titleTv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/bold"
+                    android:layout_marginRight="20dp"
+                    android:text="Penjelasan Detail CPL Di Deskripsi!"
+                    android:textAlignment="viewEnd"
+                    android:textSize="12dp" />
+            </RelativeLayout>
+
 
             <FrameLayout
                 android:id="@+id/fragmentHome"

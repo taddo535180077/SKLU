@@ -23,6 +23,15 @@
                 android:fontFamily="@font/bold"
                 android:text="CLO WORDING"
                 android:textSize="30dp" />
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/bold"
+                android:textColor="@color/black"
+                android:text="Input Nilai IPS Anda!"/>
 
 
             <androidx.recyclerview.widget.RecyclerView
@@ -54,6 +63,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:fontFamily="@font/bold"
+                android:textColor="@color/red"
                 android:text="RESULT"/>
 
         </LinearLayout>

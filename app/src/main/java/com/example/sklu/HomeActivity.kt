@@ -37,7 +37,11 @@ class HomeActivity : AppCompatActivity() {
 
         namePerson = func.getPref(this, "name")
         nameText = func.getPref(this, "username")
-        name.text = "Hi, $namePerson"
+        var roleTv = ""
+        if(role=="mhs") roleTv = "MHS"
+        else if(role=="cmp") roleTv = "CP"
+        else if(role=="admin") roleTv = "PL"
+        name.text = "Hi $roleTv, $namePerson"
         if (role == "mhs") {
             fav.visibility = View.GONE
         } else {
@@ -308,6 +312,7 @@ class HomeActivity : AppCompatActivity() {
     fun goToHome() {
         favBtn = false
         home = true
+        titleTv.text = "Penjelasan Detail CPL Di Deskripsi"
         if (role == "cmp") {
             goToFav()
         } else {
@@ -321,6 +326,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun goToFav() {
+        titleTv.text = "Penjelasan Detail CPL Di Deskripsi"
         if (role == "cmp") {
             home = true
             back.visibility = View.GONE
@@ -340,6 +346,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     fun goToClo(type: String) {
+        titleTv.text = ""
         home = false
         var tipe = "%," + type + ",%"
         var username = ""
@@ -412,6 +419,7 @@ class HomeActivity : AppCompatActivity() {
             goToFav()
         }
         hasil.setOnClickListener {
+            titleTv.text = ""
             home = false
             val fragmentTransaction = fragmentManager.beginTransaction()
             fragmentTransaction.replace(R.id.fragmentHome, HasilFragment(this))
@@ -421,6 +429,7 @@ class HomeActivity : AppCompatActivity() {
             back.visibility = View.VISIBLE
         }
         bantuan.setOnClickListener {
+            titleTv.text = ""
             home = false
             val fragmentTransaction = fragmentManager.beginTransaction()
             fragmentTransaction.replace(R.id.fragmentHome, BantuanFragment(this))
@@ -430,6 +439,7 @@ class HomeActivity : AppCompatActivity() {
             back.visibility = View.VISIBLE
         }
         desc.setOnClickListener {
+            titleTv.text = ""
             home = false
             val fragmentTransaction = fragmentManager.beginTransaction()
             fragmentTransaction.replace(R.id.fragmentHome, DescFragment(this))
@@ -440,6 +450,7 @@ class HomeActivity : AppCompatActivity() {
         }
 
         pengukuran.setOnClickListener {
+
             home = true
             goToHome()
             closeDrawer()
