@@ -55,7 +55,6 @@ class CloFragment(val items: ArrayList<Clo>, val homeActivity: HomeActivity, val
         submit.setOnClickListener {
             itemAdapter.updateAll()
 
-            Toast.makeText(homeActivity, "Data Berhasil Di Update!", Toast.LENGTH_SHORT).show()
             homeActivity.goToClo(type)
         }
 
@@ -73,7 +72,7 @@ class CloFragment(val items: ArrayList<Clo>, val homeActivity: HomeActivity, val
         }
         val df = DecimalFormat("#.##")
         df.roundingMode = RoundingMode.CEILING
-        val results = df.format(total).toDouble()
+        val results = df.format(total)
 
 
         result.text = "$res, $results"

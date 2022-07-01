@@ -84,7 +84,7 @@ class RegisterActivity : AppCompatActivity() {
 
     }
     private fun goToLogin(){
-        var i = Intent(this, MainActivity::class.java)
+        var i = Intent(this, PopUp::class.java)
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         startActivity(i)
         finish()
